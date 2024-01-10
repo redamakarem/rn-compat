@@ -19,8 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('register', [\App\Http\Controllers\Api\AuthController::class, 'createUser'])->name('register');
-Route::post('login', [\App\Http\Controllers\Api\AuthController::class, 'loginUser'])->name('login');
+// Route::post('register', [\App\Http\Controllers\Api\AuthController::class, 'createUser'])->name('register');
+// Route::post('login', [\App\Http\Controllers\Api\AuthController::class, 'loginUser'])->name('login');
 
 
 Route::get('auth/google', [GoogleSignIn::class, 'redirectToGoogle']);
