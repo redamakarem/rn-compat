@@ -47,6 +47,7 @@ class GoogleSignIn extends Controller
             return response()->json(['token' => $token]);
         } catch (Exception $e) {
             // Handle the exception, e.g., log the error or show an error message
+            return response()->json(['error' => 'Error occurred while signing in with Google.']);
         }
     }
 }
