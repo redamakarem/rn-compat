@@ -27,7 +27,7 @@ class GoogleSignIn extends Controller
 
             if ($existingUser) {
                 // User already exists, issue a token
-                $token = $existingUser->createToken('Google Login Token')->plainTextToken;
+                $token = $existingUser->createToken('compat-token')->plainTextToken;
             } else {
                 // User doesn't exist, create a new user
                 $newUser = new User;
@@ -40,7 +40,7 @@ class GoogleSignIn extends Controller
                 $newUser->save();
 
                 // Issue a token for the new user
-                $token = $newUser->createToken('Google Login Token')->plainTextToken;
+                $token = $newUser->createToken('compat-token')->plainTextToken;
             }
 
             // Return the token to the client
