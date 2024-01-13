@@ -30,3 +30,4 @@ Route::post('login', [\App\Http\Controllers\Api\AuthController::class, 'loginUse
 
 Route::get('auth/google', [GoogleSignIn::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [GoogleSignIn::class, 'handleGoogleCallback']);
+Route::post('auth/google/token', [GoogleSignIn::class, 'GoogleLoginWithToken']);
