@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\GoogleSignIn;
+use App\Http\Controllers\API\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,11 +24,12 @@ Route::get('/', function () {
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::middleware('auth:sanctum')->post('/logout', [\App\Http\Controllers\Api\AuthController::class, 'logoutUser'])->name('logout');
+
+Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logoutUser'])->name('logout');
 
 
-Route::post('register', [\App\Http\Controllers\Api\AuthController::class, 'createUser'])->name('register');
-Route::post('login', [\App\Http\Controllers\Api\AuthController::class, 'loginUser'])->name('login');
+Route::post('register', [AuthController::class, 'createUser'])->name('register');
+Route::post('login', [AuthController::class, 'loginUser'])->name('login');
 
 
 Route::get('auth/google', [GoogleSignIn::class, 'redirectToGoogle']);
