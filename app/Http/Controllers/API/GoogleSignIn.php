@@ -65,6 +65,7 @@ class GoogleSignIn extends Controller
             if ($existingUser) {
                 // User already exists, issue a token
                 $token = $existingUser->createToken('compat-token')->plainTextToken;
+                return response()->json(['token' => $token, 'user' => $existingUser]);
             } else {
                 // User doesn't exist, create a new user
                 $newUser = new User;
@@ -78,10 +79,10 @@ class GoogleSignIn extends Controller
 
                 // Issue a token for the new user
                 $token = $newUser->createToken('compat-token')->plainTextToken;
+                
             }
 
             // Return the token to the client
-            return response()->json(['token' => $token]);
         } catch (Exception $e) {
             // Handle the exception, e.g., log the error or show an error message
             return response()->json(['error' => $e->getMessage()]);
