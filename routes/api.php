@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\GoogleSignIn;
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\CandidatesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,15 +18,17 @@ use App\Http\Controllers\API\AuthController;
 */
 
 
-Route::get('/', function () {
-    return response()->json(['message' => 'Hello World!']);
+Route::middleware('auth:sanctum')->group(function () {
+    // Your routes go here
+    Route::post('/logout', [AuthController::class, 'logoutUser'])->name('logout');
+    // Add more routes that require auth:sanctum
+
+    Route::get('/candidates', [CandidatesController::class, 'index'])->name('candidates');
+    Route::post('/candidates', [CandidatesController::class, 'store'])->name('candidates.store');
 });
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
-Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logoutUser'])->name('logout');
+
 
 
 Route::post('register', [AuthController::class, 'createUser'])->name('register');
@@ -35,3 +38,8 @@ Route::post('login', [AuthController::class, 'loginUser'])->name('login');
 Route::get('auth/google', [GoogleSignIn::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [GoogleSignIn::class, 'handleGoogleCallback']);
 Route::post('auth/google/token', [GoogleSignIn::class, 'GoogleLoginWithToken']);
+
+
+// To test
+
+
