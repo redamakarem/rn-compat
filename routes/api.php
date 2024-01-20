@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\GoogleSignIn;
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\CriteriaController;
 use App\Http\Controllers\API\CandidatesController;
 
 /*
@@ -21,10 +22,17 @@ use App\Http\Controllers\API\CandidatesController;
 Route::middleware('auth:sanctum')->group(function () {
     // Your routes go here
     Route::post('/logout', [AuthController::class, 'logoutUser'])->name('logout');
-    // Add more routes that require auth:sanctum
-
+    // Candidates
     Route::get('/candidates', [CandidatesController::class, 'index'])->name('candidates');
     Route::post('/candidates', [CandidatesController::class, 'store'])->name('candidates.store');
+
+
+    // Criteria
+
+    Route::get('/criteria', [CriteriaController::class, 'index'])->name('criteria');
+    Route::post('/criteria', [CriteriaController::class, 'store'])->name('criteria.store');
+    
+    
 });
 
 

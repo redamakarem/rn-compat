@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Candidate::class);
     }
+
+    public function criteria()
+    {
+        return $this->hasMany(Criteria::class);
+    }
 }
