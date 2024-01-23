@@ -41,7 +41,7 @@ class CriteriaController extends Controller
         if (!$criteria) {
             return response()->json([
                 'message' => 'Criteria not found',
-                'criteria' => $request()->criteria_id
+                'criteria' => $request->criteria_id
             ], 404);
         }
         $request->validate([
