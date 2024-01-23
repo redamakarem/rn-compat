@@ -40,7 +40,8 @@ class CriteriaController extends Controller
         $criteria = auth()->user()->criteria()->find($request->criteria_id);
         if (!$criteria) {
             return response()->json([
-                'message' => 'Criteria not found'
+                'message' => 'Criteria not found',
+                'criteria' => $request()->all()->toArray();
             ], 404);
         }
         $request->validate([
