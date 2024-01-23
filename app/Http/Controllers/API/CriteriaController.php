@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Criteria;
 use Illuminate\Http\Request;
 
 class CriteriaController extends Controller
@@ -37,7 +38,9 @@ class CriteriaController extends Controller
 
     public function update(Request $request)
     {
-        $criteria = auth()->user()->criteria->find($request->criteria_id);
+        $criteria = Criteria::where('id', $request->criteria_id)
+            ->where('user_id', auth()->user()->id)
+            ->first();
         if (!$criteria) {
             return response()->json([
                 'message' => 'Criteria not found',
