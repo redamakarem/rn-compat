@@ -45,6 +45,7 @@ class CriteriaController extends Controller
             ], 404);
         }
         $request->validate([
+            'criteria_id' => ['required', 'numeric'], // 'criteria_id' => 'required|numeric'
             'criteria_text' => ['required'],
             'criteria_type' => ['required', 'in:1,2', 'numeric']
         ]);
