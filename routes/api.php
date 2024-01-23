@@ -31,7 +31,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/criteria', [CriteriaController::class, 'index'])->name('criteria');
     Route::post('/criteria', [CriteriaController::class, 'store'])->name('criteria.store');
-    
+    Route::put('/criteria', [CriteriaController::class, 'update'])->name('criteria.update');
+
     
 });
 
