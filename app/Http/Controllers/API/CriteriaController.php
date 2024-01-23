@@ -37,7 +37,7 @@ class CriteriaController extends Controller
 
     public function update(Request $request)
     {
-        $criteria = auth()->user()->criteria()->find($request->criteria_id);
+        $criteria = auth()->user()->criteria->find($request->criteria_id);
         if (!$criteria) {
             return response()->json([
                 'message' => 'Criteria not found',
