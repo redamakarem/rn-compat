@@ -17,13 +17,14 @@ class CandidatesController extends Controller
     }
 
 
-    public function store()
+    public function store(Request $request)
 {
     $this->validate(request(), [
         'name' => 'required',
         'email' => 'required|email',
         'mobile' => 'required',
         'dob' => 'required|date',
+        'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         
     ]);
 
@@ -34,12 +35,18 @@ class CandidatesController extends Controller
         'dob' => request('dob'),
         
     ]);
+    if ($request->hasFile('image')) {
+        $path = $request->file('image')->store('images', 'public');
+        $candidate->update(['image_path' => $path]);
+    }
 
     return response()->json([
         'message' => 'Candidate created successfully',
         'candidate' => $candidate
     ], 201);
 }
+
+
 }
 
 
