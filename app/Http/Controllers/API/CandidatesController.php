@@ -37,7 +37,7 @@ class CandidatesController extends Controller
     ]);
     if ($request->hasFile('image')) {
         $path = $request->file('image')->store('images', 'public');
-        $candidate->update(['image_path' => $path]);
+        $candidate->update(['candidate_image' => $path]);
     }
 
     return response()->json([
