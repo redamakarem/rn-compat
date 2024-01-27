@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
+
 
 class Candidate extends Model
 {
@@ -24,7 +26,7 @@ class Candidate extends Model
 
     public function getCandidateImageUrlAttribute()
 {
-    return $this->candidate_image ? asset('storage/' . $this->candidate_image) : null;
+    return $this->candidate_image ? Storage::url($this->candidate_image) : null;
 }
 
 
