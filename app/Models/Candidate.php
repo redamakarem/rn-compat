@@ -22,6 +22,12 @@ class Candidate extends Model
     }
 
 
+    public function getCandidateImageUrlAttribute()
+{
+    return $this->candidate_image ? asset('storage/' . $this->candidate_image) : null;
+}
+
+
     public function getHoroscopeAttribute()
     {
         $date = $this->dob;

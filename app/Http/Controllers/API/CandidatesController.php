@@ -10,6 +10,7 @@ class CandidatesController extends Controller
     public function index()
     {
         $candidates = auth()->user()->candidates->each->append('horoscope');
+        $candidates = auth()->user()->candidates->each->append('candidate_image_url');
         return response()->json([
             'message' => 'Candidates fetched successfully',
             'candidates' => $candidates
