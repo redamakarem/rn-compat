@@ -26,7 +26,7 @@ class Candidate extends Model
 
     public function getCandidateImageUrlAttribute()
 {
-    return $this->candidate_image ? Storage::url($this->candidate_image) : null;
+    return $this->candidate_image ? url('/').Storage::url($this->candidate_image) : null;
 }
 
 
