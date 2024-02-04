@@ -16,8 +16,8 @@ class NotificationController extends Controller
         $body = $request->body;
         $data = $request->data??[];
 
-        $this->sendNotification($deviceToken, $title, $body, $data=[]);
-        return response()->json(['message' => 'Notification sent successfully']);
+        // $this->sendNotification($deviceToken, $title, $body, $data=[]);
+        // return response()->json(['message' => 'Notification sent successfully']);
     }
 
     function sendNotification($deviceToken, $title, $body, $data)
