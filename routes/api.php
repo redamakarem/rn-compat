@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\GoogleSignIn;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CriteriaController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\API\CandidatesController;
 
 /*
@@ -50,5 +51,8 @@ Route::post('auth/google/token', [GoogleSignIn::class, 'GoogleLoginWithToken']);
 
 
 // To test
+
+
+Route::post('notification/send', [NotificationController::class, 'send']);
 
 
