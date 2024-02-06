@@ -15,9 +15,10 @@ class CreateCriteriaCandidateTable extends Migration
     {
         Schema::create('criteria_candidate', function (Blueprint $table) {
             $table->id();
+            $table->integer('response')->default(0)->comment('0: No, 1: Yes, 2: Unanswered');
             $table->foreignId('criteria_id')->constrained()->onDelete('cascade');
             $table->foreignId('candidate_id')->constrained()->onDelete('cascade');
-            $table->boolean('response');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
