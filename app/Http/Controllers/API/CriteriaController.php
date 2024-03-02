@@ -72,7 +72,7 @@ class CriteriaController extends Controller
         if (!$criteria) {
             return response()->json([
                 'message' => 'Criteria not found',
-                'criteria' => $request->id
+                'criteria' => $request
             ], 404);
         }
         $criteria->delete();
