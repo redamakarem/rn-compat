@@ -62,4 +62,22 @@ class CriteriaController extends Controller
             'criteria' => $criteria
         ], 200);
     }
+
+    public function destroy(Request $request)
+    {
+        $criteria = Criteria::where('id', $request->criteria_id)
+            ->where('user_id', auth()->user()->id)
+            ->first();
+        if (!$criteria) {
+            return response()->json([
+                'message' => 'Criteria not found',
+                'criteria' => $request->criteria_type
+            ], 404);
+        }
+        $criteria->delete();
+        return response()->json([
+            'message' => 'Criteria deleted successfully',
+            'criteria' => $criteria
+        ], 200);
+    }
 }
