@@ -65,14 +65,14 @@ class CriteriaController extends Controller
 
     public function destroy(Request $request)
     {
-        
-        $criteria = Criteria::where('id', $request->criteria_id)
+
+        $criteria = Criteria::where('id', $request->id)
             ->where('user_id', auth()->user()->id)
             ->first();
         if (!$criteria) {
             return response()->json([
                 'message' => 'Criteria not found',
-                'criteria' => $request->criteria_type
+                'criteria' => $request->id
             ], 404);
         }
         $criteria->delete();
