@@ -65,6 +65,7 @@ class CriteriaController extends Controller
 
     public function destroy(Request $request)
     {
+        
         $criteria = Criteria::where('id', $request->criteria_id)
             ->where('user_id', auth()->user()->id)
             ->first();

@@ -35,7 +35,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/criteria', [CriteriaController::class, 'update'])->name('criteria.update');
     Route::delete('/criteria', [CriteriaController::class, 'destroy'])->name('criteria.destroy');
 
-    
 });
 
 
