@@ -11,6 +11,15 @@ class AuthController extends Controller
 {
     public function createUser(CreateUserRequest $request)
     {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'unique:users'],
+            'password' => ['required', 'min:8'],
+            'country_id' => ['required', 'numeric'],
+            'mob' => ['required', 'string'],
+            'dob' => ['required', 'date'],
+            'device_id' => ['required', 'string'],
+        ]);
         $user = User::create($request->only(['name', 'email', 'password']));
         $user->profile()->create([
             'country_id' => $request->country_id,
