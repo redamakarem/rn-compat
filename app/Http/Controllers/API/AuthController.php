@@ -15,7 +15,7 @@ class AuthController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'min:8'],
-            'country_id' => ['required', 'numeric'],
+            'country_id' => ['required'],
             'mob' => ['required', 'string'],
             'dob' => ['required', 'date'],
             'device_id' => ['required', 'string'],
